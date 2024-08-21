@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 // User registration
-app.post('/api/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { name, password, email, gender } = req.body;
 
   try {
@@ -43,7 +43,7 @@ app.post('/api/signup', async (req, res) => {
 });
 
 // User login
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   
@@ -61,7 +61,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 // Get user profile
-app.get('/api/user/profile', async (req, res) => {
+app.get('user/profile', async (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
@@ -80,7 +80,7 @@ app.get('/api/user/profile', async (req, res) => {
   }
 });
 
-app.post('/api/admin/login', async (req, res) => {
+app.post('admin/login', async (req, res) => {
   const { email, password } = req.body;
 
   // Assuming a single admin account (this could be modified for different admin handling)
@@ -95,7 +95,7 @@ app.post('/api/admin/login', async (req, res) => {
   return res.status(401).send('Invalid credentials');
 });
 
-app.get('/api/admin/users', async (req, res) => {
+app.get('/admin/users', async (req, res) => {
   try {
       const users = await User.find({}, { password: 0 }); // Exclude the password field
       res.json(users);
