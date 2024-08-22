@@ -5,7 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: 'https://dashboard-frontend-sois.onrender.com',
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://mohanbabu:book123@cluster0.nh3orav.mongodb.net/', {
