@@ -109,6 +109,11 @@ app.get('/api/admin/users', async (req, res) => {
       res.status(500).send('Server error');
   }
 });
+app.get('/', (req, res) => {
+  res.send('Welcome to the API');
+});
+
+// Other routes...
 
 // Start server
 const PORT = process.env.PORT || 5000;
