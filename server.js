@@ -110,7 +110,7 @@ app.get('/api/admin/users', async (req, res) => {
   }
 });
 app.get('/', (req, res) => {
-  res.send('Welcome to the API');
+  res.send('Welcome to the Backend server');
 });
 
 // Other routes...
